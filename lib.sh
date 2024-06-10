@@ -19,6 +19,16 @@ read_quantity(){
 	quantity=$(sed '2q;d' $1/$DATA_FILENAME 2>/dev/null || find $1 -type d -print -mindepth 1 | grep -c /)
 }
 
+read_datasheets(){
+	has_datasheet=$(find $1/ -name *.pdf -print -mindepth 1 | grep -c /)
+
+	if [ "$has_datasheet" -eq "0" ];then
+		datasheets="NO"
+	else
+		datasheets="YES"
+	fi
+}
+
 write_quantity(){
 	sed -i "" "2s/${quantity}/${new_quantity}/" "$1/$DATA_FILENAME"
 }

@@ -17,11 +17,12 @@ for n in $(find $BASE/* -type d ); do
 	read_identifier "$n"
 	read_description "$n"
 	read_quantity "$n"
+	read_datasheets "$n"
 
 	if [ -z "$description" ]; then
-		output+=$(printf '%s' "$identifier ($quantity)")
+		output+=$(printf '%s\n - - - - - - -' "$identifier ($quantity)")
 	else
-		output+=$(printf '%s' "$identifier ($quantity) - $description")
+		output+=$(printf '%s' "$identifier ($quantity) $datasheets - $description")
 	fi
 
 	output+="\n"
