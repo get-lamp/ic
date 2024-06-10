@@ -10,7 +10,7 @@ else
 	BASE=$1
 fi
 
-output=""
+output="Category/Identifier Quantity Has-datasheet - Description\n~\n"
 
 for n in $(find $BASE/* -type d ); do 
 
@@ -20,7 +20,7 @@ for n in $(find $BASE/* -type d ); do
 	read_datasheets "$n"
 
 	if [ -z "$description" ]; then
-		output+=$(printf '%s\n - - - - - - -' "$identifier ($quantity)")
+		output+=$(printf "%s" "$identifier" | awk '{ print toupper($0) }')
 	else
 		output+=$(printf '%s' "$identifier ($quantity) $datasheets - $description")
 	fi
