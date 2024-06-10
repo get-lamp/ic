@@ -1,0 +1,31 @@
+#/bin/bash
+
+source lib.sh
+
+DATA_FILENAME=.data
+
+if [ -z "$1" ]; then
+	BASE=./parts
+else
+	BASE=$1
+fi
+
+output=""
+
+for n in $(find $BASE/* -type d ); do 
+
+	read_identifier "$n"
+	read_description "$n"
+	read_quantity "$n"
+
+	if [ -z "$description" ]; then
+		output+=$(printf '%s' "$identifier ($quantity)")
+	else
+		output+=$(printf '%s' "$identifier ($quantity) - $description")
+	fi
+
+	output+="\n"
+	
+done
+
+echo $output | column -t

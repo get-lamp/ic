@@ -1,0 +1,15 @@
+# /bin/bash
+source lib.sh
+
+DATA_FILENAME=.data
+
+read_quantity "$1"
+
+new_quantity=`expr $quantity + $2`
+
+write_quantity "$1" "$quantity" "$new_quantity"
+
+
+#oldqty=`cut -d ',' -f2 $1/qty.txt` || touch $1/qty.txt && echo "0" > $1/qty.txt
+#newqty=`expr $oldqty + $2`
+#echo $newqty > $1/qty.txt

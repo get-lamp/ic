@@ -1,0 +1,14 @@
+#/bin/bash
+
+DATA_FILENAME=.data
+
+echo_header(){
+	echo "\n"
+}
+
+echo_footer(){
+	printf -- "-%.0s" {1..80}; echo;
+}
+
+for each in $(find "$1" -name $DATA_FILENAME); do echo_header; cat $each; echo_footer; done
+

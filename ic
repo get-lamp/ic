@@ -1,0 +1,6 @@
+# /bin/bash
+source lib.sh
+
+DATA_FILENAME=.data
+
+mkdir -p $1 && touch $1/.data && write_data_file "$1" "$2" "$3"
