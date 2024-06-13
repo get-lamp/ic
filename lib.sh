@@ -20,7 +20,7 @@ read_quantity(){
 }
 
 read_datasheets(){
-	has_datasheet=$(find $1/ -name *.pdf -print -mindepth 1 | grep -c /)
+	has_datasheet=$(find $1/ -iname *.pdf -print -mindepth 1 | grep -c /)
 
 	if [ "$has_datasheet" -eq "0" ];then
 		datasheets="NO"
