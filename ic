@@ -3,4 +3,8 @@ source lib.sh
 
 DATA_FILENAME=.data
 
+if [ -z $3 ]; then
+	set -- "${@:1:2}" "0" 
+fi
+
 mkdir -p $1 && touch $1/.data && write_data_file "$1" "$2" "$3"
