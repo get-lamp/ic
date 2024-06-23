@@ -5,14 +5,14 @@ source lib.sh
 DATA_FILENAME=.data
 
 if [ -z "$1" ]; then
-	BASE=./parts
+	BASE=.
 else
 	BASE=$1
 fi
 
 output="Category/Identifier Quantity Datasheet | Description\n~\n"
 
-for n in $(find $BASE/* -type d ); do 
+for n in $( find $BASE/* -type d 2>/dev/null ); do 
 
 	read_identifier "$n"
 	read_description "$n"

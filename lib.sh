@@ -8,7 +8,7 @@
 
 read_identifier(){
 	# get identifier from leaf directory name
-	identifier="$(echo $n | cut -f3-6 -d/)"
+	identifier="$(echo $n | cut -f2-6 -d/)"
 }
 
 read_description(){
