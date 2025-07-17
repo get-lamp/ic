@@ -3,12 +3,14 @@
 DATA_FILENAME=.data
 
 echo_header(){
-	echo "\n"
+	echo -e "\n"
 }
 
 echo_footer(){
 	printf -- "-%.0s" {1..80}; echo;
 }
 
-for each in $(find "$1" -name $DATA_FILENAME); do echo_header; cat $each; echo_footer; done
+for each in $(find . -name "*$1*"); do echo_header; cat $each/$DATA_FILENAME; echo_footer; done
+
+for each in $(grep -rl "$1"); do echo_header; cat $each; echo_footer; done
 
