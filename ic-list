@@ -20,13 +20,15 @@ for n in $( find $BASE/* -type d 2>/dev/null ); do
 	read_datasheets "$n"
 
 	if [ -z "$description" ]; then
+	    output+=".\n"
 		output+=$(printf "%s" "$identifier" | awk '{ print toupper($0) }')
+		output+="\n.\n"
 	else
 		output+=$(printf '%s' "$identifier ($quantity) $datasheets | $description")
 	fi
 
 	output+="\n"
-	
+
 done
 
-echo $output | column -t
+echo -e $output | column -t -W 3
