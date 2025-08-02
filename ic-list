@@ -31,4 +31,4 @@ for n in $( find $BASE/* -type d 2>/dev/null ); do
 
 done
 
-echo -e $output | column -t -W 3
+echo -e $output | column -t -T 0 
